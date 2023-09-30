@@ -28,6 +28,12 @@
 
 ## Installation
 
+What am I using?
+> node
+> nest
+> typeorm com drive postgres
+> docker com imagem postgres
+
 ```bash
 $ npm install
 ```
@@ -45,28 +51,62 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Project Description
 
-```bash
-# unit tests
-$ npm run test
+Project Kanban is a web application for task management that allows users to create, assign, update, and track task progress. It was developed using the NestJS framework and PostgreSQL database.
 
-# e2e tests
-$ npm run test:e2e
+### Entity Definition and Database Modeling
 
-# test coverage
-$ npm run test:cov
-```
+The project includes the following entities and their descriptions:
 
-## Support
+![Modeling Database image](assets/modeling.png)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- **User**: Represents application users. Each user has a name, email, encrypted password, role, and other related information.
+- **Task**: Represents tasks that can be created and managed by users. Each task has a title, description, status, end date, and priority.
+- **Category**: Represents categories to which tasks can be assigned. Each category has a name and can be associated with multiple tasks.
+- **Status**: Represents possible states of a task, such as "In Progress" or "Completed."
 
-## Stay in touch
+Could implement
+- **Priority**: Represents priority levels that can be assigned to a task, such as "High," "Medium," or "Low."
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+The database modeling reflects these entities and their relationships.
+
+### Route Definitions
+
+The application offers the following routes according to the entities, for example, to task endpoints:
+
+
+- `POST /task`: Creates a new task.
+- `PUT /task/:id`: Updates an existing task.
+- `DELETE /task/:id`: Deletes a task.
+- `GET /task`: Returns the list of all tasks.
+- `GET /task/:id`: Returns details of a specific task.
+
+I took the following workflow to develop the endpoints
+![Modeling endpoints image](assets/endpoints_definitions.png)
+
+
+
+### Guard Definitions
+
+To protect routes and control access, the project uses the following guards:
+
+- `AuthGuard`: Ensures that the user is authenticated to access protected routes.
+
+Could Implement
+- `AdminGuard`: Restricts access to administrative and user management functionalities to administrators.
+
+I took the following workflow to develop the database
+![Modeling guards image](assets/guards.png)
+
+
+
+### Role Definitions
+
+The system has three different roles:
+
+- **Administrator (Admin)**: Has full access to administrative and user management functionalities.
+- **Collaborator (Colab)**: Has basic access to create, edit, and manage tasks assigned to themselves.
 
 ## License
 
