@@ -39,6 +39,12 @@ $ npm install
 ```
 
 ## Running the app
+To connect the database, you need to run the docker application. Inside the repository folder, run the following command
+
+```bash
+# pull image database and settings
+$ docker-compose up    
+```
 
 ```bash
 # development
